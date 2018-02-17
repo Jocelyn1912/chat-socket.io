@@ -8,7 +8,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html'); //Pasando el HTML
 });
 
-
+// Función que nos otorga Socket.IO para enviar mensajes
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
      io.emit('chat message', msg);
