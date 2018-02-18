@@ -4,18 +4,18 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 // '/' controlador de rutas para el sitio web
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html'); //Pasando el HTML
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html'); // Pasando el HTML
 });
 
 // Función que nos otorga Socket.IO para enviar mensajes
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-     io.emit('chat message', msg);
+io.on('connection', function(socket) {
+  socket.on('chat message', function(msg) {
+    io.emit('chat message', msg);
   });
 });
 
 // Haciendo que el servidor mire al puerto
-http.listen(3000, function(){
+http.listen(3000, function() {
   console.log('listening on *:3000');
 });
